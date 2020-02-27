@@ -2,7 +2,7 @@ from app import app
 from flask import render_template
 from app.register_form import Register
 from app import db
-from flask import flash, redirect, url_for
+from flask import flash, redirect, url_for, request
 from app.models import Users, Test, Parties, Questions
 
 @app.route('/')
@@ -34,6 +34,18 @@ def register():
     else:
         return render_template('register.html', form=form)
 
+
+@app.route('/survey', methods=['GET', 'POST'])
+def survey():
+    if request.method == 'GET':
+        questions = Questions.query.all()
+        pretend_data = [1,2,3,4,5]
+
+        return render_template('survey.html', questions=questions, pretend_data=pretend_data)
+
+    # if request.method == 'POST':
+    #     pull user answers from post request and party answers from db
+    #     run comparrison logic
 
 
 
