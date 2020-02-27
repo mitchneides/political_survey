@@ -38,9 +38,8 @@
 		<type label="Bit" length="0" sql="bit" quote=""/>
 	</group>
 </datatypes><table x="198" y="52" name="users">
-<row name="user_id" null="0" autoincrement="1">
+<row name="id" null="0" autoincrement="1">
 <datatype>INTEGER</datatype>
-<relation table="all_answers" row="test_party_user_id" />
 </row>
 <row name="gender" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -48,63 +47,72 @@
 <row name="age" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
+<row name="occupation" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="monthly_income" null="1" autoincrement="0">
+<datatype>DECIMAL</datatype>
+<default>NULL</default></row>
 <row name="birthplace" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT</datatype>
 <default>NULL</default></row>
 <row name="current_city" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT</datatype>
 <default>NULL</default></row>
-<row name="occupation" null="1" autoincrement="0">
-<datatype>MEDIUMTEXT</datatype>
-<default>NULL</default></row>
 <row name="religious_affiliation" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
-<part>user_id</part>
+<part>id</part>
 </key>
 <comment>all info collected from sign-up form</comment>
 </table>
-<table x="402" y="52" name="all_answers">
-<row name="test_party_user_id" null="0" autoincrement="1">
+<table x="388" y="53" name="questions">
+<row name="id" null="0" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="q1" null="1" autoincrement="0">
-<datatype>INTEGER(5)</datatype>
-<default>NULL</default></row>
-<row name="q2" null="1" autoincrement="0">
-<datatype>INTEGER(5)</datatype>
-<default>NULL</default></row>
-<row name="q3" null="1" autoincrement="0">
+<row name="text" null="1" autoincrement="0">
 <datatype>INTEGER(5)</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
-<part>test_party_user_id</part>
+<part>id</part>
 </key>
 <comment>stores an answer to each specific question</comment>
 </table>
-<table x="197" y="313" name="questions">
-<row name="question number" null="0" autoincrement="1">
+<table x="15" y="60" name="test">
+<row name="id" null="0" autoincrement="1">
 <datatype>INTEGER</datatype>
 </row>
-<row name="question_words" null="1" autoincrement="0">
+<row name="date" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT</datatype>
 <default>NULL</default></row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="answers" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="party_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="parties" row="id" />
+</row>
 <key type="PRIMARY" name="">
-<part>question number</part>
+<part>id</part>
 </key>
-<comment>stores all specific questions for survey</comment>
 </table>
-<table x="20" y="53" name="parties">
-<row name="party_id" null="0" autoincrement="1">
+<table x="194" y="347" name="parties">
+<row name="id" null="0" autoincrement="1">
 <datatype>INTEGER</datatype>
-<relation table="users" row="user_id" />
 </row>
-<row name="party_name" null="1" autoincrement="0">
+<row name="name" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT</datatype>
 <default>NULL</default></row>
+<row name="answers" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
-<part>party_id</part>
+<part>id</part>
 </key>
 <comment>lists all parties</comment>
 </table>

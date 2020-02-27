@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post">
+    {{ form.hidden_tag() }}
+
+    {{ form.gender.label }}
+    {{ form.gender }}<br>
+
+    {{ form.age.label }}
+    {{ form.age }}<br>
+
+    {{ form.occupation.label }}
+    {{ form.occupation }}<br>
+
+    {{ form.income.label }}
+    {{ form.income }}<br>
+
+    {{ form.birthplace.label }}
+    {{ form.birthplace }}<br>
+
+    {{ form.current_city.label }}
+    {{ form.current_city }}<br>
+
+    {{ form.religion.label }}
+    {{ form.religion }}<br>
+
+    {{ form.submit(class_='btn btn-primary') }}
+</form>
+
+{% endblock %}
