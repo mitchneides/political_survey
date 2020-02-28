@@ -4,7 +4,8 @@
 function add_event_listeners() {
 	var answer_buttons = document.getElementsByClassName('answer-button');
 	for (button of answer_buttons) {
-		button.addEventListener("click", function() {
+		button.addEventListener("click", function(ev) {
+  			ev.preventDefault();
   			let buttons_in_group = this.parentNode.children;
   			for (current_button of buttons_in_group) {
   				current_button.classList.remove("active");
@@ -13,20 +14,27 @@ function add_event_listeners() {
   			console.log(this.getAttribute('name')+ ": " +this.value);
 		});
 	}
-	document.getElementById('submit').addEventListener("click", function(ev) {
-	    ev.preventDefault();
-	    alert("You clicked submit")
-	    make_user_answer_array()
-//	    add array to hidden form
-//	    ev.unbind().submit()
-	});
+	return
 }
 add_event_listeners();
 
 
+function submit_button() {
+    document.getElementById('submit').addEventListener("click", function(ev) {
+            ev.preventDefault();
+            alert("You clicked submit")
+            let user_string = make_user_answer_string()
+            document.getElementById('answers').value = user_string
+//            ev.unbind('submit').submit() ////////////////////////////////////////////////////////
+    //   	ev.unbind().submit()
+    });
+    return
+}
+submit_button()
+
 // called on submit survey button
 // creates array of all user's answers
-function make_user_answer_array() {
+function make_user_answer_string() {
     var answer_buttons = document.getElementsByClassName('answer-button');
     var user_answer_array = [];
     for(var i=1; i<=answer_buttons.length; i++) {
@@ -41,6 +49,8 @@ function make_user_answer_array() {
         }
     }
     console.log(user_answer_array);
+    array_as_string = user_answer_array.toString();
+    return array_as_string
 }
 
 
