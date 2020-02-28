@@ -4,7 +4,7 @@ from datetime import datetime
 
 class Users(db.Model):
 
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key=True)
     gender = db.Column(db.String)
     age = db.Column(db.Integer)
     occupation = db.Column(db.String)
@@ -16,14 +16,14 @@ class Users(db.Model):
 
 class Test(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.DateTime, default = datetime.now(), nullable = True)
+    date = db.Column(db.DateTime, default=datetime.now(), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     answers = db.Column(db.String)
     party_id = db.Column(db.Integer, db.ForeignKey('parties.id'))
 
 
 class Parties(db.Model):
-    id = db.Column(db.Integer, primary_key = True,)
+    id = db.Column(db.Integer, primary_key=True,)
     name = db.Column(db.String)
     answers = db.Column(db.String)
 

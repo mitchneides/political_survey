@@ -1,23 +1,57 @@
 // initializes page, setting event listeners to each button
-// and activates highlight for selected buttons
+// and activating highlight for selected buttons
+// also adds event listener to submit button, preventing default submit until user array has been made
 function add_event_listeners() {
 	var answer_buttons = document.getElementsByClassName('answer-button');
 	for (button of answer_buttons) {
-		button.addEventListener("click", function(ev) {
-//  			ev.preventDefault();
+		button.addEventListener("click", function() {
   			let buttons_in_group = this.parentNode.children;
   			for (current_button of buttons_in_group) {
   				current_button.classList.remove("active");
   			}
   			this.classList.add('active');
-//  			console.log(this.getAttribute('name')+ ": " +this.value);
+  			console.log(this.getAttribute('name')+ ": " +this.value);
 		});
 	}
 	document.getElementById('submit').addEventListener("click", function(ev) {
 	    ev.preventDefault();
 	    alert("You clicked submit")
-//	    js function to get all answers
+	    make_user_answer_array()
+//	    add array to hidden form
+//	    ev.unbind().submit()
 	});
 }
 add_event_listeners();
 
+
+// called on submit survey button
+// creates array of all user's answers
+function make_user_answer_array() {
+    var answer_buttons = document.getElementsByClassName('answer-button');
+    var user_answer_array = [];
+    for(var i=1; i<=answer_buttons.length; i++) {
+        var currentQuestion = 'q'+i;
+        try {
+            var answer = check_responses(currentQuestion);
+            user_answer_array.push(answer);
+            currentQuestion = '';
+        }
+        catch(err) {
+            console.log('caught')
+        }
+    }
+    console.log(user_answer_array);
+}
+
+
+// returns (to make user answer array) which button was
+// selected for each question
+function check_responses(question_name) {
+    var answer_buttons_of_question = document.getElementById(question_name).children;
+    for (var j = 0; j < answer_buttons_of_question.length; j++) {
+        if (answer_buttons_of_question[j].getAttribute('class') == 'answer-button btn btn-success active') {
+            let the_value = answer_buttons_of_question[j].getAttribute('value');
+            return the_value;
+        }
+    }
+}
