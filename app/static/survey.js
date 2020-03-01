@@ -22,10 +22,10 @@ add_event_listeners();
 function submit_button() {
     document.getElementById('submit').addEventListener("click", function(ev) {
             ev.preventDefault();
-            alert("You clicked submit")
             let user_string = make_user_answer_string()
             document.getElementById('answers').value = user_string
-//            ev.unbind('submit').submit() ////////////////////////////////////////////////////////
+            console.log('successful load')
+//          ev.unbind('submit').submit() ////////////////////////////////////////////////////////
     //   	ev.unbind().submit()
     });
     return

@@ -12,3 +12,5 @@ class Register(FlaskForm):
     current_city = StringField('Current City', validators=[data_required()])
     religion = SelectField('Religious Affiliation', choices=[('N', 'None'), ('J', 'Judaism'), ('I', 'Islam'), ('C', 'Christianity'), ('H', 'Hinduism'), ('B', 'Buddhism'), ('S', 'Sikhism'), ('A', 'Atheism'), ('X', 'Prefer not to say')], validators=[data_required()])
     submit = SubmitField()
+
+

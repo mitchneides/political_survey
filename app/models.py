@@ -19,7 +19,9 @@ class Test(db.Model):
     date = db.Column(db.DateTime, default=datetime.now(), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     answers = db.Column(db.String)
-    party_id = db.Column(db.Integer, db.ForeignKey('parties.id'))
+    party_1_id = db.Column(db.Integer, db.ForeignKey('parties.id'))
+    party_2_id = db.Column(db.Integer, db.ForeignKey('parties.id'))
+    party_3_id = db.Column(db.Integer, db.ForeignKey('parties.id'))
 
 
 class Parties(db.Model):
