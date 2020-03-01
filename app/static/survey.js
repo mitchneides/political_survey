@@ -1,6 +1,5 @@
 // initializes page, setting event listeners to each button
-// and activating highlight for selected buttons
-// also adds event listener to submit button, preventing default submit until user array has been made
+// and activates highlight for selected buttons
 function add_event_listeners() {
 	var answer_buttons = document.getElementsByClassName('answer-button');
 	for (button of answer_buttons) {
@@ -19,21 +18,21 @@ function add_event_listeners() {
 add_event_listeners();
 
 
+//adds event listener to submit button, preventing default submit until user string has been made
+//and collects user answer values as a string
 function submit_button() {
     document.getElementById('submit').addEventListener("click", function(ev) {
             ev.preventDefault();
             let user_string = make_user_answer_string()
             document.getElementById('answers').value = user_string
             console.log('successful load')
-//          ev.unbind('submit').submit() ////////////////////////////////////////////////////////
-    //   	ev.unbind().submit()
     });
     return
 }
 submit_button()
 
 // called on submit survey button
-// creates array of all user's answers
+// creates string of all user's answers
 function make_user_answer_string() {
     var answer_buttons = document.getElementsByClassName('answer-button');
     var user_answer_array = [];
@@ -54,7 +53,7 @@ function make_user_answer_string() {
 }
 
 
-// returns (to make user answer array) which button was
+// returns (to make user answer string) which button was
 // selected for each question
 function check_responses(question_name) {
     var answer_buttons_of_question = document.getElementById(question_name).children;

@@ -1,7 +1,5 @@
-# function takes 2 lists and compares their values at indexes
-# returns comparison list
-
-
+# function takes 2 lists and compares their values at corresponding indexes
+# returns sum of comparison values for each party
 def compare_two_score_lists(user_list, party_list):
     comparison_list = []
     for c, value in enumerate(user_list):
@@ -17,6 +15,7 @@ def compare_two_score_lists(user_list, party_list):
     return sum_of_list
 
 
+# sorts tuples in descending order
 def sort_tuple(tup):
     lst = len(tup)
     for i in range(0, lst):

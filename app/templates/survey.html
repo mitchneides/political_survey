@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	<div style="display: none" id="data"  my_data="{{pretend_data}}"></div>
 
     {% for question in questions %}
         <h4>{{ question.id }}) {{ question.text }}</h4>

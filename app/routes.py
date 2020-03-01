@@ -10,10 +10,10 @@ from app.compare_functions import *
 
 @app.route('/')
 def index():
-
     return render_template('index.html')
 
 
+# sends user registration info to db and takes user to survey
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = Register()
@@ -31,21 +31,19 @@ def register():
 
         db.session.add(user)
         db.session.commit()
-
-        return redirect(url_for('index'))
+        return redirect(url_for('survey'))
 
     else:
         return render_template('register.html', form=form)
 
 
+# loads survey, pushes user answers to db, runs comparison between user and party answers
 @app.route('/survey', methods=['GET', 'POST'])
 def survey():
     if request.method == 'GET':
         questions = Questions.query.all()
         form = SubmitForm()
-        pretend_data = [1,2,3,4,5]
-
-        return render_template('survey.html', questions=questions, pretend_data=pretend_data, form=form)
+        return render_template('survey.html', questions=questions, form=form)
 
     if request.method == 'POST':
         form = SubmitForm(request.form)
@@ -63,28 +61,42 @@ def survey():
             score = compare_two_score_lists(user_answer_as_list, party_answer_as_list)
             scores_with_each_party.append((answer.id, score))
 
+        # defines top 3 matching parties and the scores compared to each
         sorted_scores = sort_tuple(scores_with_each_party)
-        top_party = sorted_scores[0][0]
-        second_party = sorted_scores[1][0]
-        third_party = sorted_scores[2][0]
+        print(sorted_scores)
+        first_party_id = sorted_scores[0][0]
+        party_1_score = sorted_scores[0][1]
+        second_party_id = sorted_scores[1][0]
+        party_2_score = sorted_scores[1][1]
+        third_party_id = sorted_scores[2][0]
+        party_3_score = sorted_scores[2][1]
 
-        test = Test(date=datetime.datetime.now(), answers=answer_string, user_id=last_user_id, party_1_id=top_party, party_2_id=second_party, party_3_id=third_party)
+        # sends results to 'Test' in db
+        test = Test(date=datetime.datetime.now(), answers=answer_string, user_id=last_user_id, party_1_id=first_party_id, party_2_id=second_party_id, party_3_id=third_party_id, party_1_score=party_1_score, party_2_score=party_2_score, party_3_score=party_3_score)
         db.session.add(test)
         db.session.commit()
 
-        return redirect('results.html')
+        return redirect('results')
 
 
-    #         return render_template('survey.html', form=form)
+# displays top 3 matches, corresponding scores, and links to info of the parties
+@app.route('/results')
+def results():
+    first_match_id = Test.query.order_by(Test.date.desc()).first().party_1_id
+    second_match_id = Test.query.order_by(Test.date.desc()).first().party_2_id
+    third_match_id = Test.query.order_by(Test.date.desc()).first().party_3_id
+
+    first_party = Parties.query.get(first_match_id).name
+    first_score = Test.query.order_by(Test.date.desc()).first().party_1_score
+    second_party = Parties.query.get(second_match_id).name
+    second_score = Test.query.order_by(Test.date.desc()).first().party_2_score
+    third_party = Parties.query.get(third_match_id).name
+    third_score = Test.query.order_by(Test.date.desc()).first().party_3_score
+
+    return render_template('results.html', first_party=first_party, first_score=first_score, second_party=second_party, second_score=second_score, third_party=third_party, third_score=third_score)
 
 
 
-        # survey.add_event_listeners();       /////////doesnt work but need to find way to access the result list(string) from js
-        # user_answer = survey.submit_button()
-        # print(user_answer)
-
-    #     pull user answers from post request and party answers from db
-    #     run comparrison logic
 
 
 

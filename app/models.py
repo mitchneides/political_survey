@@ -3,7 +3,6 @@ from datetime import datetime
 
 
 class Users(db.Model):
-
     id = db.Column(db.Integer, primary_key=True)
     gender = db.Column(db.String)
     age = db.Column(db.Integer)
@@ -22,6 +21,9 @@ class Test(db.Model):
     party_1_id = db.Column(db.Integer, db.ForeignKey('parties.id'))
     party_2_id = db.Column(db.Integer, db.ForeignKey('parties.id'))
     party_3_id = db.Column(db.Integer, db.ForeignKey('parties.id'))
+    party_1_score = db.Column(db.Integer)
+    party_2_score = db.Column(db.Integer)
+    party_3_score = db.Column(db.Integer)
 
 
 class Parties(db.Model):

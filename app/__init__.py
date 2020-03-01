@@ -2,16 +2,17 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import random
+import os
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = random._urandom(56)
-
+psw = os.environ.get('DB_PASSWORD')
 
 # Database Connection
 db_info = {'host': 'localhost',
            'database': 'political_survey',
-           'psw': 'Hameri16!',
+           'psw': psw,
            'user': 'mitch',
            'port': ''}
 app.config[
