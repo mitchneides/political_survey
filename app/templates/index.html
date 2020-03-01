@@ -1,12 +1,29 @@
 {% extends 'base.html' %}
 
+{% block style %}
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/index.css') }}">
+{% endblock %}
+
+
 {% block content %}
 
-<h1>homepage</h1>
+<div class="jumbotron" style="background-image: url({{ url_for('static', filename='images/voting.jpg') }}); background-size: 100vw;">
+  <h1 class="display-4">Welcome to your Political Survey!
+  </h1>
+  <p class="lead">Struggling to determine which party is best aligned with your values?</p>
+  <p class="lead">With only <strong>one vote</strong>, yet so many parties to choose from, we don't blame you!</p>
+  <hr class="my-4">
+  <p>We've created this site to help people better understand <br>where they fit along the Israeli political spectrum.</p><br>
+  <p id="last_head_p">Let's find out where you land!</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="/register" role="button">Get started!</a>
+  </p>
+</div>
 
-<h2><a href={{url_for('register')}} class="btn btn-primary">Register</a></h2>
-<br>
-<h2><a href={{url_for('survey')}} class="btn btn-primary">Survey</a></h2>
+<!--<h1>homepage</h1>-->
 
+<!--<h2><a href={{url_for('register')}} class="btn btn-primary">Register</a></h2>-->
+<!--<br>-->
+<!--<h2><a href={{url_for('survey')}} class="btn btn-primary">Survey</a></h2>-->
 
 {% endblock %}

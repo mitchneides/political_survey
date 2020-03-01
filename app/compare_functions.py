@@ -26,4 +26,3 @@ def sort_tuple(tup):
                 tup[j] = tup[j + 1]
                 tup[j + 1] = temp
     return tup
-

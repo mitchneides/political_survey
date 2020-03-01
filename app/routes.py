@@ -7,6 +7,8 @@ from flask import flash, redirect, url_for, request
 from app.models import Users, Test, Parties, Questions
 import datetime
 from app.compare_functions import *
+from plotly import graph_objs as go
+
 
 @app.route('/')
 def index():
@@ -27,11 +29,12 @@ def register():
         current_city = form.current_city.data
         religion = form.religion.data
 
-        user = Users(gender=gender, age=age, occupation=occupation, income=income, birthplace=birthplace, current_city=current_city, religion=religion)
+        user = Users(gender=gender, age=age, occupation=occupation, income=income, birthplace=birthplace,
+                     current_city=current_city, religion=religion)
 
         db.session.add(user)
         db.session.commit()
-        return redirect(url_for('survey'))
+        return redirect('survey')
 
     else:
         return render_template('register.html', form=form)
@@ -72,7 +75,9 @@ def survey():
         party_3_score = sorted_scores[2][1]
 
         # sends results to 'Test' in db
-        test = Test(date=datetime.datetime.now(), answers=answer_string, user_id=last_user_id, party_1_id=first_party_id, party_2_id=second_party_id, party_3_id=third_party_id, party_1_score=party_1_score, party_2_score=party_2_score, party_3_score=party_3_score)
+        test = Test(date=datetime.datetime.now(), answers=answer_string, user_id=last_user_id,
+                    party_1_id=first_party_id, party_2_id=second_party_id, party_3_id=third_party_id,
+                    party_1_score=party_1_score, party_2_score=party_2_score, party_3_score=party_3_score)
         db.session.add(test)
         db.session.commit()
 
@@ -93,12 +98,13 @@ def results():
     third_party = Parties.query.get(third_match_id).name
     third_score = Test.query.order_by(Test.date.desc()).first().party_3_score
 
-    return render_template('results.html', first_party=first_party, first_score=first_score, second_party=second_party, second_score=second_score, third_party=third_party, third_score=third_score)
+    # create and display figure (opens in new tab)
+    fig = go.Figure(
+        data=[go.Bar(x=[first_party, second_party, third_party], y=[first_score, second_score, third_score])],
+        layout_title_text="Top Party Matches",
+    )
+    fig.update_layout(xaxis_title="Party", yaxis_title="Match Index", width=800, height=950)
+    fig.show()
 
-
-
-
-
-
-
-
+    return render_template('results.html', first_party=first_party, first_score=first_score, second_party=second_party,
+                           second_score=second_score, third_party=third_party, third_score=third_score)
