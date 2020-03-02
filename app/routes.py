@@ -15,6 +15,11 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/parties')
+def parties():
+    return render_template('parties.html')
+
+
 # sends user registration info to db and takes user to survey
 @app.route('/register', methods=['GET', 'POST'])
 def register():

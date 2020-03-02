@@ -70,4 +70,5 @@ option {
 
 .btn-primary {
     background-color: rgb(0, 128, 255);
+    box-shadow: 3px 3px 3px #296B9E;
 }

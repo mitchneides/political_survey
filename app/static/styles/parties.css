@@ -1,0 +1,50 @@
+body{
+	background-image: url(sander-crombach-uTjrKwK6N-s-unsplash.jpg);
+	background-size:120%;
+	font-family: 'Quattrocento', serif;
+}
+
+.container-fluid {
+	padding-left: 100px;
+	padding-top: 30px;
+}
+.card {
+	padding-top: 20px;
+	margin-top: 10px;
+	border-radius: 20px;
+	height: 560px;
+	box-shadow: 5px 5px 5px #296B9E;
+}
+
+.card-body {
+	height:250px;
+}
+
+.btn {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	position: bottom;
+	padding-bottom: 0;
+	bottom:0;
+    box-shadow: 3px 3px 3px #296B9E;
+}
+p {
+	padding-bottom: 0;
+}
+
+#overlay{
+	height: 100%;
+	background-color: rgb(244,244,244,0.7);
+}
+h1 {
+	text-align: center;
+	font-family: 'Quattrocento', serif;
+	font-size: 3em;
+
+}
+h5 {
+	font-weight: bold;
+	border-bottom: #2be7e9 solid 2px;
+	text-align: center;
+}

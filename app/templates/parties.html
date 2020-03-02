@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block style %}
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/parties.css') }}">
+{% endblock %}
+
+{% block content %}
+<div id="contain" style="background-image: url({{ url_for('static', filename='images/jlem.jpg') }}); background-size: 100vw;">
+
+<!-- background overlay -->
+<div id="overlay">
+	<!-- Container with cards -->
+	<div class="container-fluid">
+		<h1><strong>Israel's Political Parties</strong></h1>
+		<div class="row">
+			<div class="col-12 col-md-6 col-lg-3">
+				<div class="card" style="width: 14rem;margin-bottom: 50px;">
+					<img class="card-img-top" src="{{url_for('static', filename='images/Likud.PNG')}}" alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title">Likud</h5>
+						<p class="card-text">Likud, officially the Likud – National Liberal Movement, is a centre-right to right-wing political party.</p>
+						<a href="http://www.likud.org.il/" class="btn btn-primary">More Info</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 col-lg-3">
+				<div class="card" style="width: 14rem;margin-bottom: 50px;">
+					<img class="card-img-top" src="{{url_for('static', filename='images/Kachollavan.PNG')}}" alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title">Kachol Lavan</h5>
+						<p class="card-text"> Blue and White is a centrist and liberal party that sees itself as open to all kinds of israeli life and mindsets. </p>
+						<a href="https://kachollavan.org.il/" class="btn btn-primary">More Info</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 col-lg-3">
+				<div class="card" style="width: 14rem;margin-bottom: 50px;">
+					<img class="card-img-top" src="{{url_for('static', filename='images/Yemina.PNG')}}" alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title">Yemina</h5>
+						<p class="card-text">The Union of Right-wing Parties is an electoral alliance of right-wing to far-right religious Zionist parties</p>
+						<a href="https://yemina.co.il/" class="btn btn-primary">More Info</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 col-lg-3">
+				<div class="card" style="width: 14rem;margin-bottom: 50px;">
+					<img class="card-img-top" src="{{url_for('static', filename='images/jointlist.PNG')}}" alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title">Joint List</h5>
+						<p class="card-text">The party advocates for the rights of Arab citizens, greater democratic freedoms, and a two-state solution</p>
+						<a href="http://www.jointlist.org.il/" class="btn btn-primary">More Info</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 col-lg-3">
+				<div class="card" style="width: 14rem;margin-bottom: 50px;">
+					<img class="card-img-top" src="{{url_for('static', filename='images/otzmah.PNG')}}" alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title">Otzmah Yehudit</h5>
+						<p class="card-text">Otzma Yehudit is a far-right political party which is anti-arab, and extremely pro-Israel and one-state solution</p>
+						<a href="http://ozmayeudit.com/" class="btn btn-primary">More Info</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 col-lg-3">
+				<div class="card" style="width: 14rem;margin-bottom: 50px;;">
+					<img class="card-img-top" src="{{url_for('static', filename='images/Shaas.PNG')}}" alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title">Shas</h5>
+						<p class="card-text">Shas is a Haredi religious political party that primarily represents the interests of Sephardic, and Mizrahi Jews.</p>
+						<a href="http://shas.org.il/" class="btn btn-primary">More Info</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 col-lg-3">
+				<div class="card" style="width: 14rem;margin-bottom: 50px;">
+					<img class="card-img-top" src="{{url_for('static', filename='images/HaAvodah.PNG')}}" alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title">Haavodah/Meretz</h5>
+						<p class="card-text">The Israeli Labor Party, commonly known as HaAvoda, is a social democratic and Zionist political party</p>
+						<a href="https://lp1.emet2020.co.il/" class="btn btn-primary">More Info</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 col-lg-3">
+				<div class="card" style="width: 14rem;margin-bottom: 50px;">
+					<img class="card-img-top" src="{{url_for('static', filename='images/Israelbeitenu.PNG')}}" alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title">Israel Beitenu</h5>
+						<p class="card-text">Yisrael Beiteinu is a secular nationalist political party that primarily represents Russian immigrants</p>
+						<a href="http://www.beytenu.org/" class="btn btn-primary">More Info</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
