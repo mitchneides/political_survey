@@ -1,7 +1,7 @@
 // initializes page, setting event listeners to each button
 // and activates highlight for selected buttons
 function add_event_listeners() {
-	var answer_buttons = document.getElementsByClassName('answer-button');
+	var answer_buttons = document.getElementsByClassName('btn-outline-primary');
 	for (button of answer_buttons) {
 		button.addEventListener("click", function(ev) {
   			ev.preventDefault();
@@ -21,7 +21,7 @@ add_event_listeners();
 //adds event listener to submit button, preventing default submit until user string has been made
 //and collects user answer values as a string
 function submit_button() {
-    document.getElementById('submit').addEventListener("click", function(ev) {
+    document.getElementById('save-answers').addEventListener("click", function(ev) {
             ev.preventDefault();
             let user_string = make_user_answer_string()
             document.getElementById('answers').value = user_string
@@ -34,7 +34,7 @@ submit_button()
 // called on submit survey button
 // creates string of all user's answers
 function make_user_answer_string() {
-    var answer_buttons = document.getElementsByClassName('answer-button');
+    var answer_buttons = document.getElementsByClassName('btn-outline-primary');
     var user_answer_array = [];
     for(var i=1; i<=answer_buttons.length; i++) {
         var currentQuestion = 'q'+i;
@@ -58,7 +58,7 @@ function make_user_answer_string() {
 function check_responses(question_name) {
     var answer_buttons_of_question = document.getElementById(question_name).children;
     for (var j = 0; j < answer_buttons_of_question.length; j++) {
-        if (answer_buttons_of_question[j].getAttribute('class') == 'answer-button btn btn-success active') {
+        if (answer_buttons_of_question[j].getAttribute('class') == 'btn btn-outline-primary active') {
             let the_value = answer_buttons_of_question[j].getAttribute('value');
             return the_value;
         }

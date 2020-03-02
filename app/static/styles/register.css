@@ -1,0 +1,73 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: linear-gradient(to right, rgb(215, 215, 215), rgb(0, 128, 255));
+	margin-bottom: 100px;
+}
+
+form {
+}
+
+#pre-survey {
+    text-align: center;
+}
+
+#outer_div {
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    max-width: 650px;
+	padding: 10px 20px;
+	background: #C7E1F6;
+	margin: 10px auto;
+	margin-top: 60px;
+	padding: 20px;
+	border-radius: 8px;
+    box-shadow: 10px 10px 5px #296B9E;
+
+}
+
+#age, #occupation, #birthplace, #current_city {
+    border: none;
+	border-radius: 4px;
+	font-size: 15px;
+	margin: 0;
+	outline: 0;
+	padding: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	background-color: #e8eeef;
+	color:#8a97a0;
+	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	margin-bottom: 30px;
+}
+
+#submit {
+    margin-top: 15px;
+}
+
+#gender, #income, #religion {
+    display: flex;
+    position: relative;
+    background-color: #e8eeef;
+}
+
+option {
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+    user-select: none;
+    background-color: #e8eeef;
+}
+
+.btn-primary {
+    background-color: rgb(0, 128, 255);
+}

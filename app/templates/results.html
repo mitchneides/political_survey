@@ -1,13 +1,37 @@
 {% extends 'base.html' %}
 
+{% block style %}
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/results.css') }}">
+{% endblock %}
+
 {% block content %}
-	<h3>results</h3>
+<div id="contain" style="background-image: url({{ url_for('static', filename='images/jlem.jpg') }}); background-size: 100vw;">
 
-	<p>{{ first_party }}</p>
-	<p>{{ first_score }}</p>
-	<p>{{ second_party }}</p>
-	<p>{{ second_score }}</p>
-	<p>{{ third_party }}</p>
-	<p>{{ third_score }}</p>
 
+	<div id="overlay">
+        <br>
+        <h1>Congratulations!</h1><br>
+        <h2>Your views are most aligned with the following parties: </h2> <br>
+
+        <div id="top3">
+			<div class="parties">
+			<h1 class="winning-answer">{{ first_party }}</h1>
+			<h2>Match Index: {{ first_score }}/25</h2>
+			</div>
+			<div class="parties">
+			<h1 class="winning-answer">{{ second_party }}</h1>
+			<h2>Match Index: {{ second_score }}/25</h2>
+			</div>
+			<div class="parties">
+			<h1 class="winning-answer">{{ third_party }}</h1>
+			<h2>Match Index: {{ third_score }}/25</h2>
+			</div>
+		</div>
+
+		<h3>For more information on your party matches, as well as all political parties, <br></h3>
+		<button id="party-info" class="btn btn-primary"><a href="/parties" id="button-text">click here</a></button>
+	</div>
+
+
+</div>
 {% endblock %}

@@ -1,31 +1,39 @@
 {% extends 'base.html' %}
 
+{% block style %}
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/register.css') }}">
+{% endblock %}
+
 {% block content %}
+<div id="outer_div">
 <form method="post">
+    <p id="pre-survey"><strong>To begin the survey, please fill in the following information.<br>All answers are anonymous.</strong></p>
+
     {{ form.hidden_tag() }}
 
-    {{ form.gender.label }}
-    {{ form.gender }}<br>
+    {{ form.gender.label }}:
+    {{ form.gender(class="form-control") }}<br>
 
-    {{ form.age.label }}
+    {{ form.age.label }}:
     {{ form.age }}<br>
 
-    {{ form.occupation.label }}
+    {{ form.occupation.label }}:
     {{ form.occupation }}<br>
 
-    {{ form.income.label }}
-    {{ form.income }}<br>
+    {{ form.income.label }}:
+    {{ form.income(class="form-control") }}<br>
 
-    {{ form.birthplace.label }}
+    {{ form.birthplace.label }}:
     {{ form.birthplace }}<br>
 
-    {{ form.current_city.label }}
+    {{ form.current_city.label }}:
     {{ form.current_city }}<br>
 
-    {{ form.religion.label }}
-    {{ form.religion }}<br>
+    {{ form.religion.label }}:
+    {{ form.religion(class="form-control") }}<br>
 
-    {{ form.submit(class_='btn btn-primary') }}
+    {{ form.submit(class_='btn btn-primary', value='Get Started!') }}
 </form>
+</div>
 
 {% endblock %}

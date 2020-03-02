@@ -1,20 +1,24 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block style %}
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/survey.css') }}">
+{% endblock %}
 
+{% block content %}
+<div id="outer_div">
     {% for question in questions %}
         <h4>{{ question.id }}) {{ question.text }}</h4>
         <div class="answer-btn-container" id="q{{ question.id }}">
-		<button class="answer-button btn btn-success" name="a{{ question.id }}" value="-2">Strongly Disagree</button>
-		<button class="answer-button btn btn-success" name="a{{ question.id }}" value="-1">Moderately Disagree</button>
-		<button class="answer-button btn btn-success active" name="a{{ question.id }}" value="0">Neutral</button>
-		<button class="answer-button btn btn-success" name="a{{ question.id }}" value="1">Moderately Agree</button>
-		<button class="answer-button btn btn-success" name="a{{ question.id }}" value="2">Strongly Agree</button>
+		<button class="btn btn-outline-primary" name="a{{ question.id }}" value="-2">Strongly Disagree</button>
+		<button class="btn btn-outline-primary" name="a{{ question.id }}" value="-1">Moderately Disagree</button>
+		<button class="btn btn-outline-primary active" name="a{{ question.id }}" value="0">Neutral</button>
+		<button class="btn btn-outline-primary" name="a{{ question.id }}" value="1">Moderately Agree</button>
+		<button class="btn btn-outline-primary" name="a{{ question.id }}" value="2">Strongly Agree</button>
 		</div>
     {% endfor %}
 
 	<form id="survey-form" method="post">
-		<button id="submit" type="submit">Save Answers</button>
+		<button id="save-answers" class="btn btn-primary" type="submit">Save Answers</button>
 	</form>
 
 	<form method="post">
@@ -24,4 +28,5 @@
 	</form>
 
 	<script src="{{ url_for('static', filename='survey.js') }}"></script>
+</div>
 {% endblock %}

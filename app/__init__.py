@@ -12,7 +12,7 @@ psw = os.environ.get('DB_PASSWORD')
 # Database Connection
 db_info = {'host': 'localhost',
            'database': 'political_survey',
-           'psw': psw,
+           'psw': 'Hameri16!',
            'user': 'mitch',
            'port': ''}
 app.config[

@@ -1,0 +1,45 @@
+
+
+body {
+    background-color: #2be7e9;
+    font-family: 'Quattrocento', serif;
+    background-image: url(sander-crombach-uTjrKwK6N-s-unsplash.jpg);
+    background-size:120%;
+    text-align: center;
+}
+#overlay {
+	height: 100vh;
+	background-color: rgb(244,244,244,0.7);
+}
+
+.winning-answer {
+	font-weight: bold;
+	font-size: 4em;
+
+}
+
+#party-link {
+	font-size: 1.5em;
+}
+
+#top3 {
+    display: flex;
+    flex: space-around;
+    justify-content: center;
+    margin: 100px;
+}
+
+.parties {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#party-info {
+    box-shadow: 5px 5px 5px #296B9E;
+    margin-top: 20px;
+}
+
+#button-text {
+    color: white;
+    font-size: 30px;
+}

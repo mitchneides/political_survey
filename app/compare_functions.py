@@ -3,6 +3,7 @@
 def compare_two_score_lists(user_list, party_list):
     comparison_list = []
     for c, value in enumerate(user_list):
+        print(value, c)
         if int(value) == int(party_list[c]):
             comparison_list.append(1)
         elif int(value) > 0 and int(party_list[c]) > 0 or int(value) < 0 and int(party_list[c]) < 0:
